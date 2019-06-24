@@ -16,7 +16,7 @@ class BarCodeForm(FlaskForm):
 def default_page():
     form = BarCodeForm()
     if form.validate_on_submit():
-        return redirect("/barcode/" + form.barcode.data)
+        return redirect("/barcode/" + str(form.barcode.data))
     return render_template('main.html', title='BarCharGen', form=form)
 
 @app.route("/barcode/<seed>")
