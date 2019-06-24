@@ -19,7 +19,7 @@ def default_page():
         return redirect("/barcode/" + form.barcode.data)
     return render_template('main.html', title='BarCharGen', form=form)
 
-@app.route("barcode/<seed>")
+@app.route("/barcode/<seed>")
 def generate(seed):
     return "Make a character with: " + seed
 
