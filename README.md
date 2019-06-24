@@ -1,0 +1,2 @@
+# barchargen
+Barcode character generator
