@@ -3,13 +3,13 @@ from flask import render_template
 from flask import redirect
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, NumberRange
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'hQCPJ-MZLziN9ysoJKC-pgWX-.JU-'
 
 class BarCodeForm(FlaskForm):
-    barcode = StringField('Barcode', validators=[DataRequired()])
+    barcode = StringField('Barcode', validators=[DataRequired(), NumberRange(0, 9999999999999999)])
     submit = SubmitField('Make me!')
 
 @app.route("/", methods=['GET', 'POST'])
