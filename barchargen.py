@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import render_template
+from flask import redirect
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
@@ -11,11 +12,16 @@ class BarCodeForm(FlaskForm):
     barcode = StringField('Barcode', validators=[DataRequired()])
     submit = SubmitField('Make me!')
 
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 def default_page():
     form = BarCodeForm()
+    if form.validate_on_submit():
+        return redirect("/barcode/" + form.barcode.data)
     return render_template('main.html', title='BarCharGen', form=form)
 
+@app.route("barcode/<seed>")
+def generate(seed):
+    return "Make a character with: " + seed
 
 @app.route("/ping")
 def ping():
