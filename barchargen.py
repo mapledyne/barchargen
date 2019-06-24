@@ -27,7 +27,7 @@ def generate(seed):
     seed = int(seed)
     if (seed == 0):
         seed = random.randrange(1, 999999999)
-    return render_template('chargen.html', barcode = seed, character = chargen.Chargen(seed), url = request.base_url)
+    return render_template('chargen.html', barcode = seed, character = chargen.Chargen(seed))
 
 @app.route("/ping")
 def ping():
