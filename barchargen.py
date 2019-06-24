@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import render_template
+from flask import request
 from flask import redirect
 from flask_wtf import FlaskForm
 from wtforms import IntegerField, SubmitField
@@ -26,7 +27,7 @@ def generate(seed):
     seed = int(seed)
     if (seed == 0):
         seed = random.randrange(1, 999999999)
-    return render_template('chargen.html', barcode = seed, character = chargen.Chargen(seed))
+    return render_template('chargen.html', barcode = seed, character = chargen.Chargen(seed), url = request.base_url)
 
 @app.route("/ping")
 def ping():
