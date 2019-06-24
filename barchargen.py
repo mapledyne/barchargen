@@ -7,6 +7,9 @@ app = Flask(__name__)
 def default_page():
     return render_template('main.html')
 
+@app.route("/ping")
+def ping():
+    return "pong"
 
 app.run (host = "172.21.0.4", port = 5000)
 
