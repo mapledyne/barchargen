@@ -23,6 +23,7 @@ def default_page():
 
 @app.route("/barcode/<seed>")
 def generate(seed):
+    seed = int(seed)
     if (seed == 0):
         seed = random.randrange(1, 999999999)
     return render_template('chargen.html', barcode = seed, character = chargen.Chargen(seed))
