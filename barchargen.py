@@ -4,6 +4,7 @@ from flask import redirect
 from flask_wtf import FlaskForm
 from wtforms import IntegerField, SubmitField
 from wtforms.validators import DataRequired, NumberRange
+import chargen
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'hQCPJ-MZLziN9ysoJKC-pgWX-.JU-'
@@ -21,7 +22,7 @@ def default_page():
 
 @app.route("/barcode/<seed>")
 def generate(seed):
-    return "Make a character with: " + seed
+    return render_template('chargen.html', barcode = seed, character = chargen.Chargen(seed))
 
 @app.route("/ping")
 def ping():
