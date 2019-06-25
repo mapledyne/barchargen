@@ -2,12 +2,23 @@
 
 <h1>BarCharGen</h1>
 
-<h3> Make a character with: {{ barcode }} </h3>
+<h3> Character generated with barcode: {{ barcode }} </h3>
 
 <ul>
     <li><b>Gender:</b> {{ character.gender }}</li>
     <li><b>Race:</b> {{ character.race }}</li>
+    <li><b>Stats:</b>
+    <ul>
+        <li><b>STR:</b> {{ character.stats[0] }}</li>
+        <li><b>INT:</b> {{ character.stats[1] }}</li>
+        <li><b>WIS:</b> {{ character.stats[2] }}</li>
+        <li><b>DEX:</b> {{ character.stats[3] }}</li>
+        <li><b>CON:</b> {{ character.stats[4] }}</li>
+        <li><b>CHA:</b> {{ character.stats[5] }}</li>
+    </ul>
+    </li>
 </ul>
 <hr>
 <div>To save this character, copy this URL to regenerate or share it: <a href="http://knowles-barchar.westus.cloudapp.azure.com:5000/barcode/{{ barcode }}">http://knowles-barchar.westus.cloudapp.azure.com:5000/barcode/{{ barcode }}</a> </div>
 <div>To make a new character, <a href="/">go back to the main page</a>, or you can <a href="/barcode/0">generate a random one</a>.</div>
+

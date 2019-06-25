@@ -19,6 +19,21 @@ racelist = (
     ('tiefling', 50),
 )
 
+def diehtml(die):
+    uni = ["&#x2610", "&#x2680", "&#x2681", "&#x2682", "&#x2683", "&#x2684", "&#x2685"]
+    return uni[die]
+
+def dieroll():
+    rolls = [random.randrange(1,7), random.randrange(1,7), random.randrange(1,7), random.randrange(1,7)]
+    rolls.sort(reverse=True)
+    total = rolls[0] + rolls[1] + rolls[2]
+    ret = "{} ({} {} {} / {})".format(total,
+                                      diehtml(rolls[0]),
+                                      diehtml(rolls[1]),
+                                      diehtml(rolls[2]),
+                                      diehtml(rolls[3]))
+    return ret
+
 # Returns a random value, considering the weights of each item.
 class WeightedChoice(object):
     def __init__(self, weights):
@@ -42,3 +57,5 @@ class Chargen(object):
  
         self.gender = WeightedChoice(genderlist).next()
         self.race = WeightedChoice(racelist).next()
+        self.stats = [ dieroll(), dieroll(), dieroll(), dieroll(), dieroll(), dieroll() ]
+
