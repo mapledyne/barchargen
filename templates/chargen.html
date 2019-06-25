@@ -5,8 +5,9 @@
 <h3> Make a character with: {{ barcode }} </h3>
 
 <ul>
-    <li>Gender: {{ character.gender }}</li>
+    <li><b>Gender:</b> {{ character.gender }}</li>
+    <li><b>Race:</b> {{ character.race }}</li>
 </ul>
-
+<hr>
 <div>To save this character, copy this URL to regenerate or share it: <a href="http://knowles-barchar.westus.cloudapp.azure.com:5000/barcode/{{ barcode }}">http://knowles-barchar.westus.cloudapp.azure.com:5000/barcode/{{ barcode }}</a> </div>
 <div>To make a new character, <a href="/">go back to the main page</a>, or you can <a href="/barcode/0">generate a random one</a>.</div>

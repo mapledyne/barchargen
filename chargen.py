@@ -7,6 +7,18 @@ genderlist = (
     ('gender fluid', 10),
 )
 
+racelist = (
+    ('dragonborn', 50),
+    ('dwarf', 100),
+    ('elf', 100),
+    ('gnome', 50),
+    ('half-elf', 100),
+    ('halfling', 100),
+    ('half-orc', 50),
+    ('human', 200),
+    ('tiefling', 50),
+)
+
 # Returns a random value, considering the weights of each item.
 class WeightedChoice(object):
     def __init__(self, weights):
@@ -29,3 +41,4 @@ class Chargen(object):
         random.seed(self.seed)
  
         self.gender = WeightedChoice(genderlist).next()
+        self.race = WeightedChoice(racelist).next()
