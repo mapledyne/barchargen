@@ -20,7 +20,7 @@ racelist = (
 )
 
 def diehtml(die):
-    uni = ["&#x2610", "&#x2680", "&#x2681", "&#x2682", "&#x2683", "&#x2684", "&#x2685"]
+    uni = ["◻", "⚀", "⚁", "⚂", "⚃", "⚄", "⚅"]
     return uni[die]
 
 def dieroll():
