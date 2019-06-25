@@ -33,5 +33,6 @@ def generate(seed):
 def ping():
     return "pong"
 
-app.run (host = "172.21.0.4", port = 5000)
+if __name__ == "__main__":
+    app.run (host = "172.21.0.4", port = 5000)
 
