@@ -1,5 +1,10 @@
 import random
 import bisect
+import yaml
+
+with open('names.yaml') as f:
+    # use safe_load instead load
+    namefile = yaml.safe_load(f)
 
 genderlist = (
     ('male', 100),
@@ -34,6 +39,23 @@ def dieroll():
                                       diehtml(rolls[3]))
     return ret
 
+def getname(race, gender):
+
+    # Not the best, but at least doesn't default names all to male. Sorting a template out for other genders would be nice.
+    if (gender != "male" and gender != "female"):
+        gender = random.choice(["male", "female"])
+    try:
+        newname = ""
+        for name_part_list in namefile[race][gender]:
+            newname += random.choice(name_part_list)
+        newname += " "
+        for name_part_list in namefile[race]["surname"]:
+            newname += random.choice(name_part_list)
+        return newname
+    except:
+        # name file entry probably doesn't include this race yet:
+        return ""
+
 # Returns a random value, considering the weights of each item.
 class WeightedChoice(object):
     def __init__(self, weights):
@@ -58,4 +80,4 @@ class Chargen(object):
         self.gender = WeightedChoice(genderlist).next()
         self.race = WeightedChoice(racelist).next()
         self.stats = [ dieroll(), dieroll(), dieroll(), dieroll(), dieroll(), dieroll() ]
-
+        self.name = getname(self.race, self.gender)

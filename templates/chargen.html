@@ -5,6 +5,9 @@
 <h3> Character generated with barcode: {{ barcode }} </h3>
 
 <ul>
+    {% if character.name %}
+    <li><b>Name:</b> {{ character.name }}</li>
+    {% endif %}
     <li><b>Gender:</b> {{ character.gender }}</li>
     <li><b>Race:</b> {{ character.race }}</li>
     <li><b>Stats:</b>
